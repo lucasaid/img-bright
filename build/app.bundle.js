@@ -60,74 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _jquery = __webpack_require__(1);
-
-function getImageLightness(imageSrc, callback) {
-  var img = document.createElement("img");
-  img.src = imageSrc;
-
-  var colorSum = 0;
-
-  img.onload = function () {
-    // create canvas
-    var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-
-    var headerHeight = (0, _jquery.$)('header').outerHeight();
-
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
-
-    var imageData = ctx.getImageData(0, 0, canvas.width, headerHeight);
-    var data = imageData.data;
-    var r, g, b, avg;
-
-    for (var x = 0, len = data.length; x < len; x += 4) {
-      r = data[x];
-      g = data[x + 1];
-      b = data[x + 2];
-
-      avg = Math.floor((r + g + b) / 3);
-      colorSum += avg;
-    }
-
-    var brightness = Math.floor(colorSum / (img.width * headerHeight));
-    callback(brightness);
-  };
-}
-(0, _jquery.$)(document).ready(function () {
-
-  var bg = (0, _jquery.$)(".banner").css('background-image');
-  bg = bg.replace('url(', '').replace(')', '').replace(/\"/gi, "");
-
-  getImageLightness(bg, function (brightness) {
-    console.log(brightness);
-    if (brightness < 140) (0, _jquery.$)("header").addClass("header--dark");
-  });
-
-  (0, _jquery.$)('.banner').click(function () {
-    var image = "/images/tests/" + Math.floor(Math.random() * 10 + 1) + ".jpeg";
-    (0, _jquery.$)(".banner").css('background-image', "url('" + image + "')");
-
-    getImageLightness(image, function (brightness) {
-      if (brightness < 140) (0, _jquery.$)("header").addClass("header--dark");else (0, _jquery.$)("header").removeClass("header--dark");
-    });
-  });
-});
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9963,6 +9900,55 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)(module)))
 
 /***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _imgBright = __webpack_require__(3);
+
+var _imgBright2 = _interopRequireDefault(_imgBright);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _jquery2.default)(document).ready(function () {
+  (0, _imgBright2.default)((0, _jquery2.default)('.banner'), 0, (0, _jquery2.default)('header').outerHeight(), 0, 0, function (brightness) {
+    if (brightness < 140) (0, _jquery2.default)("header").addClass("dark");
+  });
+  (0, _imgBright2.default)((0, _jquery2.default)('.banner'), (0, _jquery2.default)('h1').outerWidth(), (0, _jquery2.default)('h1').outerHeight(), "10%", "30%", function (brightness) {
+    if (brightness < 140) (0, _jquery2.default)("h1").addClass("dark");else (0, _jquery2.default)("h1").removeClass("dark");
+  });
+  (0, _imgBright2.default)((0, _jquery2.default)('.banner'), (0, _jquery2.default)('h2').outerWidth(), (0, _jquery2.default)('h2').outerHeight(), "50px", "50%", function (brightness) {
+    if (brightness < 140) (0, _jquery2.default)("h2").addClass("dark");else (0, _jquery2.default)("h2").removeClass("dark");
+  });
+
+  (0, _jquery2.default)('.banner').click(function () {
+    var image = "images/" + Math.floor(Math.random() * 5 + 1) + ".jpeg";
+    (0, _jquery2.default)(".banner").css('background-image', "url('" + image + "')");
+
+    (0, _imgBright2.default)((0, _jquery2.default)('.banner'), 0, (0, _jquery2.default)('header').outerHeight(), 0, 0, function (brightness) {
+      if (brightness < 140) (0, _jquery2.default)("header").addClass("dark");else (0, _jquery2.default)("header").removeClass("dark");
+    });
+    (0, _imgBright2.default)((0, _jquery2.default)('.banner'), (0, _jquery2.default)('h1').outerWidth(), (0, _jquery2.default)('h1').outerHeight(), "10%", "30%", function (brightness) {
+      if (brightness < 140) (0, _jquery2.default)("h1").addClass("dark");else (0, _jquery2.default)("h1").removeClass("dark");
+    });
+  });
+  (0, _jquery2.default)(window).resize(function () {
+    (0, _imgBright2.default)((0, _jquery2.default)('.banner'), (0, _jquery2.default)('h1').outerWidth(), (0, _jquery2.default)('h1').outerHeight(), "10%", "30%", function (brightness) {
+      if (brightness < 140) (0, _jquery2.default)("h1").addClass("dark");else (0, _jquery2.default)("h1").removeClass("dark");
+    });
+    (0, _imgBright2.default)((0, _jquery2.default)('.banner'), (0, _jquery2.default)('h2').outerWidth(), (0, _jquery2.default)('h2').outerHeight(), "50px", "50%", function (brightness) {
+      if (brightness < 140) (0, _jquery2.default)("h2").addClass("dark");else (0, _jquery2.default)("h2").removeClass("dark");
+    });
+  });
+});
+
+/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -9991,6 +9977,196 @@ module.exports = function (module) {
 	}
 	return module;
 };
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+exports.default = imgBright;
+
+var _jquery = __webpack_require__(0);
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var imgBright = function () {
+  function imgBright(element) {
+    var width = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+    var height = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+    var xCoord = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+    var yCoord = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
+    var callback = arguments[5];
+
+    _classCallCheck(this, imgBright);
+
+    this.element = element;
+    this.width = width;
+    this.height = height;
+    this.xCoord = xCoord;
+    this.yCoord = yCoord;
+    this.callback = callback;
+
+    this.getImageLightness();
+  }
+
+  _createClass(imgBright, [{
+    key: 'getImageLightness',
+    value: function getImageLightness() {
+
+      var imageSrc = this.element.css('background-image');
+
+      if (imageSrc) {
+        imageSrc = imageSrc.replace('url(', '').replace(')', '').replace(/\"/gi, "");
+      } else {
+        imageSrc = this.element.find('img');
+        imageSrc = imageSrc.src;
+      }
+
+      var _element$css$split = this.element.css('background-position').split(" "),
+          _element$css$split2 = _slicedToArray(_element$css$split, 2),
+          offsetX = _element$css$split2[0],
+          offsetY = _element$css$split2[1];
+
+      offsetX = parseInt(offsetX) / 100;
+      offsetY = parseInt(offsetY) / 100;
+
+      var img = new Image();
+      img.src = imageSrc;
+
+      var colorSum = 0;
+
+      img.onload = function () {
+        // create canvas
+        var canvas = document.createElement("canvas");
+        canvas.width = this.element.outerWidth();
+        canvas.height = this.element.outerHeight();
+
+        if (this.width <= 0) {
+          this.width = canvas.width;
+        }
+        if (this.height <= 0) {
+          this.height = canvas.height;
+        }
+
+        if (typeof this.xCoord == "string" && this.xCoord.indexOf("%") >= 0) {
+          this.xCoord = parseInt(this.xCoord);
+          this.xCoord = this.xCoord == 0 ? 0 : this.xCoord / 100 * canvas.width;
+        } else {
+          this.xCoord = parseInt(this.xCoord);
+        }
+        if (typeof this.yCoord == "string" && this.yCoord.indexOf("%") >= 0) {
+          this.yCoord = parseInt(this.yCoord);
+          this.yCoord = this.yCoord == 0 ? 0 : this.yCoord / 100 * canvas.height;
+        } else {
+          this.xCoord = parseInt(this.xCoord);
+        }
+
+        var ctx = canvas.getContext("2d");
+
+        this.drawImageProp(ctx, img, 0, 0, canvas.width, canvas.height, offsetX, offsetY);
+
+        var imageData = ctx.getImageData(this.xCoord, this.yCoord, this.width, this.height);
+
+        var data = imageData.data;
+        var r = void 0,
+            g = void 0,
+            b = void 0,
+            avg = void 0;
+
+        for (var x = 0, len = data.length; x < len; x += 4) {
+          r = data[x];
+          g = data[x + 1];
+          b = data[x + 2];
+
+          avg = Math.floor((r + g + b) / 3);
+          colorSum += avg;
+        }
+        var brightness = Math.floor(colorSum / (this.width * this.height));
+        this.callback(brightness);
+      }.bind(this);
+    }
+  }, {
+    key: 'drawImageProp',
+    value: function drawImageProp(ctx, img, x, y, w, h) {
+      var offsetX = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : 0.5;
+      var offsetY = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : 0.5;
+
+
+      if (arguments.length === 2) {
+        x = y = 0;
+        w = ctx.canvas.width;
+        h = ctx.canvas.height;
+      }
+
+      // keep bounds [0.0, 1.0]
+      if (offsetX < 0) offsetX = 0;
+      if (offsetY < 0) offsetY = 0;
+      if (offsetX > 1) offsetX = 1;
+      if (offsetY > 1) offsetY = 1;
+
+      var iw = img.width,
+          ih = img.height,
+          r = Math.min(w / iw, h / ih),
+          nw = iw * r,
+          // new prop. width
+      nh = ih * r,
+          // new prop. height
+      cx,
+          cy,
+          cw,
+          ch,
+          ar = 1;
+
+      // decide which gap to fill
+      if (nw < w) ar = w / nw;
+      if (Math.abs(ar - 1) < 1e-14 && nh < h) ar = h / nh; // updated
+      nw *= ar;
+      nh *= ar;
+
+      // calc source rectangle
+      cw = iw / (nw / w);
+      ch = ih / (nh / h);
+
+      cx = (iw - cw) * offsetX;
+      cy = (ih - ch) * offsetY;
+
+      // make sure source rectangle is valid
+      if (cx < 0) cx = 0;
+      if (cy < 0) cy = 0;
+      if (cw > iw) cw = iw;
+      if (ch > ih) ch = ih;
+
+      // fill image in dest. rectangle
+      ctx.drawImage(img, cx, cy, cw, ch, x, y, w, h);
+    }
+  }]);
+
+  return imgBright;
+}();
+
+function imgBright(element) {
+  var width = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+  var height = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+  var xCoord = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0;
+  var yCoord = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 0;
+  var callback = arguments[5];
+
+  return new imgBright(element, width, height, xCoord, yCoord, callback);
+}
 
 /***/ })
 /******/ ]);
