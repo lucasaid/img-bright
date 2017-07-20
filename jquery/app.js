@@ -28,7 +28,7 @@ $(document).ready(function(){
 
   $(document).keydown(function(e){
     if(e.which == 13) {
-      var image = "/images/"+(Math.floor((Math.random() * 5) + 1))+".jpeg";
+      var image = "images/"+(Math.floor((Math.random() * 5) + 1))+".jpeg";
       $(".banner").css('background-image', "url('"+image+"')");
 
       $('.banner').imgBright({

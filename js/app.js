@@ -20,7 +20,7 @@ $(document).ready(function(){
   });
 
   $('.banner').click(function(){
-    var image = "/images/"+(Math.floor((Math.random() * 5) + 1))+".jpeg";
+    var image = "images/"+(Math.floor((Math.random() * 5) + 1))+".jpeg";
     $(".banner").css('background-image', "url('"+image+"')");
 
     imgBright($('.banner'), 0, $('header').outerHeight(), 0, 0,function(brightness){

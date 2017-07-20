@@ -42,7 +42,7 @@ header.dark .nav-list__link {
 
 .banner {
   height: 100vh;
-  background: url('/images/3.jpeg') no-repeat;
+  background: url('images/3.jpeg') no-repeat;
   background-size: cover;
   background-position: top center;
   width:100vw;
