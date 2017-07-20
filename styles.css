@@ -1,0 +1,71 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+}
+header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+nav {
+  align-self: center;
+  width: auto;
+  display: block;
+}
+.nav-list {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+.nav-list__link {
+  font-size: 13px;
+  color: black;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0 26px;
+}
+
+header.dark {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,7db9e8+100&1+0,0+100 */
+  background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(125,185,232,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%,rgba(125,185,232,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(125,185,232,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#007db9e8',GradientType=0 ); /* IE6-9 */
+}
+header.dark .nav-list__link {
+  color: white;
+}
+
+
+.banner {
+  height: 100vh;
+  background: url('/images/3.jpeg') no-repeat;
+  background-size: cover;
+  background-position: top center;
+  width:100vw;
+  position: relative;
+  top:0;
+  left:0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+h1 {
+  position: absolute;
+  top: 30%;
+  left:10%;
+}
+h1.dark {
+  color: white;
+}
+h2 {
+  position: absolute;
+  top: 50%;
+  left: 50px;
+}
+h2.dark {
+  color: white;
+}
